@@ -1,0 +1,8 @@
+/usr/bin/OneWorld-cli		--	gen_context(system_u:object_r:OneWorld_exec_t,s0)
+/usr/sbin/OneWorldd		--	gen_context(system_u:object_r:OneWorld_exec_t,s0)
+/usr/lib(64)?/OneWorld/OneWorldd		--	gen_context(system_u:object_r:OneWorld_exec_t,s0)
+
+/etc/OneWorld(/.*)?		gen_context(system_u:object_r:OneWorld_conf_t,s0)
+/var/lib/OneWorld(/.*)?		gen_context(system_u:object_r:OneWorld_var_lib_t,s0)
+
+(/var)?/run/OneWorldd(/.*)?   gen_context(system_u:object_r:OneWorld_var_run_t,s0)

@@ -1,0 +1,157 @@
+
+## <summary>policy for OneWorld</summary>
+
+
+########################################
+## <summary>
+##	Transition to OneWorld.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`OneWorld_domtrans',`
+	gen_require(`
+		type OneWorld_t, OneWorld_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, OneWorld_exec_t, OneWorld_t)
+')
+
+
+########################################
+## <summary>
+##	Execute OneWorld server in the OneWorld domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`OneWorld_initrc_domtrans',`
+	gen_require(`
+		type OneWorld_initrc_exec_t;
+	')
+
+	init_labeled_script_domtrans($1, OneWorld_initrc_exec_t)
+')
+
+
+########################################
+## <summary>
+##	Search OneWorld lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`OneWorld_search_lib',`
+	gen_require(`
+		type OneWorld_var_lib_t;
+	')
+
+	allow $1 OneWorld_var_lib_t:dir search_dir_perms;
+	files_search_var_lib($1)
+')
+
+########################################
+## <summary>
+##	Read OneWorld lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`OneWorld_read_lib_files',`
+	gen_require(`
+		type OneWorld_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	read_files_pattern($1, OneWorld_var_lib_t, OneWorld_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage OneWorld lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`OneWorld_manage_lib_files',`
+	gen_require(`
+		type OneWorld_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_files_pattern($1, OneWorld_var_lib_t, OneWorld_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage OneWorld lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`OneWorld_manage_lib_dirs',`
+	gen_require(`
+		type OneWorld_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_dirs_pattern($1, OneWorld_var_lib_t, OneWorld_var_lib_t)
+')
+
+
+########################################
+## <summary>
+##	All of the rules required to administrate
+##	a OneWorld environment
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`OneWorld_admin',`
+	gen_require(`
+		type OneWorld_t;
+		type OneWorld_initrc_exec_t;
+		type OneWorld_var_lib_t;
+	')
+
+	allow $1 OneWorld_t:process { ptrace signal_perms };
+	ps_process_pattern($1, OneWorld_t)
+
+	OneWorld_initrc_domtrans($1)
+	domain_system_change_exemption($1)
+	role_transition $2 OneWorld_initrc_exec_t system_r;
+	allow $2 system_r;
+
+	files_search_var_lib($1)
+	admin_pattern($1, OneWorld_var_lib_t)
+
+')
+

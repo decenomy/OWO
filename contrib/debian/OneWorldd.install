@@ -1,0 +1,3 @@
+usr/local/bin/OneWorldd usr/bin
+usr/local/bin/OneWorld-cli usr/bin
+debian/examples/OneWorld.conf etc/OneWorld

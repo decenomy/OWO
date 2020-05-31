@@ -1,0 +1,81 @@
+policy_module(OneWorld, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type OneWorld_t;
+type OneWorld_exec_t;
+init_daemon_domain(OneWorld_t, OneWorld_exec_t)
+
+permissive OneWorld_t;
+
+type OneWorld_initrc_exec_t;
+init_script_file(OneWorld_initrc_exec_t)
+
+type OneWorld_conf_t;
+files_type(OneWorld_conf_t)
+
+type OneWorld_var_lib_t;
+files_type(OneWorld_var_lib_t)
+
+type OneWorld_var_run_t;
+files_type(OneWorld_var_run_t)
+
+type OneWorld_port_t;
+corenet_port(OneWorld_port_t)
+
+########################################
+#
+# OneWorld local policy
+#
+allow OneWorld_t self:process { fork };
+
+allow OneWorld_t self:fifo_file rw_fifo_file_perms;
+allow OneWorld_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(OneWorld_t, OneWorld_conf_t, OneWorld_conf_t)
+manage_files_pattern(OneWorld_t, OneWorld_conf_t, OneWorld_conf_t)
+
+manage_dirs_pattern(OneWorld_t, OneWorld_var_lib_t, OneWorld_var_lib_t)
+manage_files_pattern(OneWorld_t, OneWorld_var_lib_t, OneWorld_var_lib_t)
+files_var_lib_filetrans(OneWorld_t, OneWorld_var_lib_t, { dir file })
+
+manage_dirs_pattern(OneWorld_t, OneWorld_var_run_t, OneWorld_var_run_t)
+manage_files_pattern(OneWorld_t, OneWorld_var_run_t, OneWorld_var_run_t)
+
+sysnet_dns_name_resolve(OneWorld_t)
+corenet_all_recvfrom_unlabeled(OneWorld_t)
+
+allow OneWorld_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(OneWorld_t)
+corenet_tcp_sendrecv_generic_node(OneWorld_t)
+corenet_tcp_sendrecv_all_ports(OneWorld_t)
+corenet_tcp_bind_generic_node(OneWorld_t)
+
+gen_require(`
+    type OneWorld_port_t;
+')
+allow OneWorld_t OneWorld_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type OneWorld_port_t;
+')
+allow OneWorld_t OneWorld_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(OneWorld_t)
+
+files_read_etc_files(OneWorld_t)
+
+miscfiles_read_localization(OneWorld_t)
+
+sysnet_dns_name_resolve(OneWorld_t)
+
+allow OneWorld_t OneWorld_exec_t:file execute_no_trans;
+allow OneWorld_t self:process setsched;
+corecmd_exec_ls(OneWorld_t)
+corenet_tcp_connect_http_port(OneWorld_t)
+dev_read_urand(OneWorld_t)
+fs_getattr_xattr_fs(OneWorld_t)
+kernel_read_system_state(OneWorld_t)

@@ -1,0 +1,4 @@
+qt/qt_libbitcoinqt_a-qrc_OneWorld.o: qt/qrc_OneWorld.cpp \
+ /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:

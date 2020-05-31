@@ -1,0 +1,6 @@
+usr/local/bin/OneWorld-qt usr/bin
+share/pixmaps/OneWorld32.xpm usr/share/pixmaps
+share/pixmaps/OneWorld16.xpm usr/share/pixmaps
+share/pixmaps/OneWorld128.png usr/share/pixmaps
+debian/OneWorld-qt.desktop usr/share/applications
+debian/OneWorld-qt.protocol usr/share/kde4/services/

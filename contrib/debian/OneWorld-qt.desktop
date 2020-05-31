@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=OneWorld Core
+Comment=OneWorld P2P Cryptocurrency
+Comment[fr]=OneWorld, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=OneWorld, eşten eşe kriptografik sanal para birimi
+Exec=OneWorld-qt %u
+Terminal=false
+Type=Application
+Icon=OneWorld128
+MimeType=x-scheme-handler/OneWorld;
+Categories=Office;Finance;
+StartupWMClass=OneWorld-qt

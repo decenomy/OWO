@@ -1,0 +1,37 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/OneWorld_bg.qm</file>
+        <file alias="ca">locale/OneWorld_ca.qm</file>
+        <file alias="cs">locale/OneWorld_cs.qm</file>
+        <file alias="da">locale/OneWorld_da.qm</file>
+        <file alias="de">locale/OneWorld_de.qm</file>
+        <file alias="en">locale/OneWorld_en.qm</file>
+        <file alias="en_GB">locale/OneWorld_en_GB.qm</file>
+        <file alias="en_US">locale/OneWorld_en_US.qm</file>
+        <file alias="eo">locale/OneWorld_eo.qm</file>
+        <file alias="es">locale/OneWorld_es.qm</file>
+        <file alias="es_ES">locale/OneWorld_es_ES.qm</file>
+        <file alias="fi">locale/OneWorld_fi.qm</file>
+        <file alias="fr_FR">locale/OneWorld_fr_FR.qm</file>
+        <file alias="hi_IN">locale/OneWorld_hi_IN.qm</file>
+        <file alias="hr">locale/OneWorld_hr.qm</file>
+        <file alias="hr_HR">locale/OneWorld_hr_HR.qm</file>
+        <file alias="it">locale/OneWorld_it.qm</file>
+        <file alias="ja">locale/OneWorld_ja.qm</file>
+        <file alias="ko_KR">locale/OneWorld_ko_KR.qm</file>
+        <file alias="lt_LT">locale/OneWorld_lt_LT.qm</file>
+        <file alias="nl">locale/OneWorld_nl.qm</file>
+        <file alias="pl">locale/OneWorld_pl.qm</file>
+        <file alias="pt">locale/OneWorld_pt.qm</file>
+        <file alias="pt_BR">locale/OneWorld_pt_BR.qm</file>
+        <file alias="ro_RO">locale/OneWorld_ro_RO.qm</file>
+        <file alias="ru">locale/OneWorld_ru.qm</file>
+        <file alias="sk">locale/OneWorld_sk.qm</file>
+        <file alias="sv">locale/OneWorld_sv.qm</file>
+        <file alias="tr">locale/OneWorld_tr.qm</file>
+        <file alias="uk">locale/OneWorld_uk.qm</file>
+        <file alias="vi">locale/OneWorld_vi.qm</file>
+        <file alias="zh_CN">locale/OneWorld_zh_CN.qm</file>
+        <file alias="zh_TW">locale/OneWorld_zh_TW.qm</file>
+    </qresource>
+</RCC>
