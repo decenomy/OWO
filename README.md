@@ -1,4 +1,4 @@
-# OneWorld wallet repository
+# OneWorld wallet repository 
 ## Coin Specs
 
 • PoW Algorithm: Quark 
