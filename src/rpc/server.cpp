@@ -376,8 +376,6 @@ static const CRPCCommand vRPCCommands[] =
         {"oneworld", "listmasternodeconf", &listmasternodeconf, true },
         {"oneworld", "getactivemasternodecount", &getactivemasternodecount, true },
         {"oneworld", "getmasternodestatus", &getmasternodestatus, true },
-        {"oneworld", "getmasternodewinners", &getmasternodewinners, true },
-        {"oneworld", "getmasternodescores", &getmasternodescores, true },
         {"oneworld", "mnsync", &mnsync, true },
         {"oneworld", "spork", &spork, true },
         {"oneworld", "mnping", &mnping, true },
